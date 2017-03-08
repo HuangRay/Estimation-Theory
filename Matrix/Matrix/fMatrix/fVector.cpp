@@ -128,7 +128,7 @@ fVector  operator *  (const fVector &A, Float B)
 {
 	fVector C(A.size);
 	for (int i = 0; i < C.size; i++) {
-		C.elem[i] = B * C.elem[i];
+		C.elem[i] = B * A.elem[i];
 	}
 	return C;
 }
@@ -136,7 +136,7 @@ fVector  operator *  (Float B, const fVector &A)
 {
 	fVector C(A.size);
 	for (int i = 0; i < C.size; i++) {
-		C.elem[i] = B * C.elem[i];
+		C.elem[i] = B * A.elem[i];
 	}
 	return C;
 }
@@ -144,7 +144,7 @@ fVector  operator /  (const fVector &A, Float B)
 {
 	fVector C(A.size);
 	for (int i = 0; i < C.size; i++) {
-		C.elem[i] = C.elem[i]/B;
+		C.elem[i] = A.elem[i]/B;
 	}
 	return C;
 }
@@ -169,24 +169,129 @@ double   operator *  (const fVector &A, const fVector &B) // Inner-product betwe
 fVector  operator ^  (const fVector &A, const fVector &B) // Cross-product between two vectors
 {
 	/*
-	* Caculate cross
-	* A = (a1,a2,a3,...)	B = (b1,b2,b3,...)	
+	* Caculate cross:
+	* Cross can only be used in three dimention.
+	* A = (a1,a2,a3)	B = (b1,b2,b3)	
 	*		| i	 j	 k |	|a2 a3| |a1 a3| |a1 a2|
 	* C =	|a1	a2	a3 | = (|b2 b3|,|b1 b3|,|b1 b2| )
 	*		|b1	b2	b3 |	
 	*/
 	fVector C(A.size);
-	if (A.size == B.size) {
+	if ((A.size == 3) && (B.size == 3)) {
 		for (int i = 0; i < C.size; i++) {
-			//C.elem[i] = ;
+			C.elem[i] = A.elem[(i + 1) % (A.size)] * B.elem[(i + 2) % (B.size)] -
+				A.elem[(i + 2) % (A.size)] * B.elem[(i + 1) % (B.size)];
 		}
+	}
+	else {
+		cout << "The input vectors size are invalid\n";
 	}
 	return C;
 }
-//fVector& operator += (fVector &, const fVector &);
-//fVector& operator -= (fVector &, const fVector &);
-//fVector& operator *= (fVector &, Float);
-//fVector& operator /= (fVector &, Float);
+fVector& operator += (fVector &A, const fVector &B)
+{
+	A = A + B;
+	return A;
+}
+fVector& operator -= (fVector &A, const fVector &B)
+{
+	A = A - B;
+	return A;
+}
+fVector& operator *= (fVector &A, Float B)
+{
+	A = A*B;
+	return A;
+}
+fVector& operator /= (fVector &A, Float B)
+{
+	A = A / B;
+	return A;
+}
+fVector Min(const fVector &A, const fVector &B)
+{
+	return (A*A < B*B) ? A : B;
+}
+fVector  Max(const fVector &A, const fVector &B) // Element-wise maximum-element extraction between two vectors
+{
+	return (A*A > B*B) ? A : B;
+}
+double   Dist(const fVector &A, const fVector &B) // Returns two norm distance between two vectors
+{
+	fVector C;
+	if (A.size == B.size) {
+		C = A - B;
+	}
+	else {
+		cout << "The vectors' size are not equal";
+	}
+	return sqrt(C*C);
+}
+fVector  Normalize(const fVector &A) // Normalizes a vector into an unit vector
+{
+	return A / sqrt(A*A);
+}
+double   OneNorm(const fVector &A) // Returns one norm value of a vector
+{
+	double oneNorm = 0;
+	for (int i = 0; i < A.size; i++) {
+		oneNorm += fabs(A.elem[i]);
+	}
+	return oneNorm;
+}
+double   TwoNorm(const fVector &A) // Returns two norm value of a vector
+{
+	return sqrt(A*A);
+}
+double   TwoNormSqr(const fVector &A) // Returns square of the two norm value of a vector
+{
+	return A*A;
+}
+fVector  Sqrt(const fVector &A) // Element-wise square root of a vector
+{
+	fVector B(A);
+	for (int i = 0; i < B.size; i++) {
+		B.elem[i] = sqrt(B.elem[i]);
+	}
+	return B;
+}
+double   Mean(const fVector &A) // Mean value of a vector.
+{
+	return OneNorm(A) / A.size;
+}
+double   Var(const fVector &A) // Variance of a vector. 
+{
+	double mean = Mean(A);
+	//cout << mean << endl;
+	double var = 0;
+	for (int i = 0; i < A.size; i++) {
+		var += pow((A.elem[i] - mean),2);
+		//cout << var << endl;
+	}
+	var /= A.size;
+	return var;
+}
+double   Std(const fVector &A) // Standard derivation of a vector.    	
+{
+	return sqrt(Var(A));
+}
+void     ShowVector(const fVector &A, VecType Type)
+{
+	cout << "The vector is:" << endl;
+	if (Type == ColVec) {
+		for (int i = 0; i < A.size; i++) {
+			cout << A.elem[i] << endl;
+		}
+	}
+	else if (Type == RowVec) {
+		for (int i = 0; i < A.size; i++) {
+			cout << A.elem[i] << " ";
+		}
+	}
+	else {
+		cout << "ERROR!";
+	}
+}
 fVector &fVector::operator=(const fVector &B)
 {
 	this->size = B.size;
@@ -210,21 +315,28 @@ void	fVector::SetSize(int size)
 	elem = new Float[size];
 }
 
-//fVector &Swap(int i, int j);
+fVector &fVector::Swap(int i,int j)
+{
+	Float tmp;
+	tmp = this->elem[i];
+	this->elem[i] = this->elem[j];
+	this->elem[j] = tmp;
+	return *this;
+}
 //fVector GetBlock(int i, int j) const;
 //void    SetBlock(int i, int j, const fVector &);
 void	fVector::Show(VecType Type/* = ColVec*/) const
 {
 	if (Type == ColVec) {
-		cout << "The vector is\n";
+		//cout << "The vector is\n";
 		for (int i = 0; i < this->size; i++) {
 			cout << elem[i] << endl;
 		}
 	}
 	else if (Type == RowVec) {
-		std::cout << "The vector is\n";
+		//std::cout << "The vector is\n";
 		for (int i = 0; i < this->size; i++) {
-			cout << elem[i] << " ";
+			cout << elem[i] << "\t";
 		}
 		cout << endl;
 	}
@@ -232,3 +344,5 @@ void	fVector::Show(VecType Type/* = ColVec*/) const
 		cout << "ERROR\n";
 	}
 }
+
+

@@ -15,7 +15,10 @@
 
 #ifndef __MATRIX_INCLUDED__
 #define __MATRIX_INCLUDED__
-
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+//#include <malloc.h>
 #include "fVector.h"
 
 class fMatrix {

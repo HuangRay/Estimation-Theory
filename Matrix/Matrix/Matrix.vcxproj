@@ -119,11 +119,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ctest.cpp" />
+    <ClCompile Include="fMatrix\fMatrix.cpp" />
     <ClCompile Include="fMatrix\fVector.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="VectorMatrixTestAP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ctest.h" />
+    <ClInclude Include="fMatrix\fMatrix.h" />
     <ClInclude Include="fMatrix\fVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

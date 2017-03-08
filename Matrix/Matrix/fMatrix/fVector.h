@@ -13,6 +13,7 @@
 *
 */
 #include <iostream>
+#include <cmath>
 #ifndef __VECTOR_INCLUDED__
 #define __VECTOR_INCLUDED__
 
@@ -90,7 +91,7 @@ public:
 	fVector(Float, Float, Float);
 	~fVector();
 
-	static  const fVector Null;
+//	static  const fVector Null;
 
 public:
 	fVector &operator=(const fVector &);
