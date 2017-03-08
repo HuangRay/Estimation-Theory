@@ -15,30 +15,35 @@ fMatrix::fMatrix(Float *Array, int n_rows, int n_cols) : rows(n_rows) , cols(n_c
 	this->elem = new Float[this->cols*this->rows];
 	for (int i = 0; i < this->cols*this->rows; i++) {
 		this->elem[i] = Array[i];
+		//cout << this->elem[i] << "\t";
 	}
+	cout << endl;
 	this->nMatCount++;
 }
-fMatrix::fMatrix(int n_rows, int n_cols, Float *Array) {
-	this->cols = n_cols;
-	this->rows = n_rows;
+fMatrix::fMatrix(int n_rows, int n_cols, Float *Array) : rows(n_rows) , cols(n_cols)
+{
+	//this->cols = n_cols;
+	//this->rows = n_rows;
 	this->elem = new Float[this->cols*this->rows];
-	int arrSize = sizeof(Array) / sizeof(Float);
-	if (arrSize == (this->cols*this->rows)) {
-		for (int i = 0; i < arrSize; i++) {
-			this->elem[i] = Array[i];
-		}
-	}
-	else {
-		cout << "Syntax Error! \n";
+	//int arrSize = sizeof(Array) / sizeof(Float);
+	for (int i = 0; i < this->cols*this->rows; i++) {
+		this->elem[i] = Array[i];
+		//cout << this->elem[i] << "\t";
 	}
 	this->nMatCount++;
 }
 // Copy constructor.
 fMatrix::fMatrix(const fMatrix &A)
 {
-	fMatrix B(A.rows, A.cols);
-	for (int i = 0; i < (B.cols*B.rows); i++) {
-		B.elem[i] = A.elem[i];
+	this->rows = A.rows;
+	this->cols = A.cols;
+	//cout << rows << endl;
+	//cout << cols << endl;
+	//memccpy(elem, A.elem, rows*cols,);
+	this->elem = new Float [this->rows*this->cols];
+	for (int i = 0; i < (this->rows * this->cols); i++) {
+		this->elem[i] = A.elem[i];
+		//cout << this->elem[i] << "\t";
 	}
 	this->nMatCount++;
 }
@@ -59,7 +64,7 @@ fMatrix  operator +  (const fMatrix &A, const fMatrix &B)
 		}
 		
 	}
-	C.Show();
+	//C.Show();
 	return C;
 }
 // 2. A-B
@@ -158,7 +163,7 @@ fMatrix& operator /= (fMatrix &, Float)
 *-------------------------------------------------------------------------*/
 fMatrix  Transp(const fMatrix &A)	// Transpose of a matrix
 {
-	fMatrix B(A.rows, A.cols);
+	fMatrix B(A.cols, A.rows);
 	int i = 0;
 	for (int col = 0; col < A.cols; col++) {
 		for (int row = 0; row < A.rows; row++) {

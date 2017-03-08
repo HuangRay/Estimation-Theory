@@ -20,7 +20,7 @@
 #include <stdlib.h>
 //#include <malloc.h>
 #include "fVector.h"
-
+using namespace std;
 class fMatrix {
 friend class fVector;
 /*-------------------------------------------------------------------------*

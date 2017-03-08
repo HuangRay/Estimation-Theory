@@ -164,33 +164,39 @@ void testMatrixFuns()
 	cout << "\nMatB = " << endl;
 	MatB.Show();
 
+	cout << "\nMatC = " << endl;
+	MatC.Show();
+
 	cout << "\nMatX = " << endl;
 	MatX.Show();
+
+	cout << "\nMatXt = " << endl;
+	MatXt.Show();
 
 	cout << "\nStarts to test matrix operators..." << endl;
 	// 1. A+B
 	cout << "\n1. A+B" << endl;
 	(MatA+MatB).Show();
 
-	//// 2. A-B
-	//cout << "\n2. A-B" << endl;
-	//(MatA-MatB).Show();
-	//
-	//// 3. -B
-	//cout << "\n3. -B" << endl;
-	//(-MatB).Show();
+	// 2. A-B
+	cout << "\n2. A-B" << endl;
+	(MatA-MatB).Show();
+	
+	// 3. -B
+	cout << "\n3. -B" << endl;
+	(-MatB).Show();
 
-	//// 4. 2*A
-	//cout << "\n4. 2*A" << endl;
-	//(2*MatA).Show();
+	// 4. 2*A
+	cout << "\n4. 2*A" << endl;
+	(2*MatA).Show();
 
-	//// 5. A*0.5
-	//cout << "\n5. A*0.5" << endl;
-	//(MatA*0.5).Show();
+	// 5. A*0.5
+	cout << "\n5. A*0.5" << endl;
+	(MatA*0.5).Show();
 
-	//// 6. A/2
-	//cout << "\n6. A/2" << endl;
-	//(MatA/2).Show();
+	// 6. A/2
+	cout << "\n6. A/2" << endl;
+	(MatA/2).Show();
 
 	// 7. A*B
 //	cout << "\n7. A*B" << endl;
@@ -232,9 +238,9 @@ void testMatrixFuns()
 //
 //	cout << "\nStarts to test matrix functions..." << endl;
 //
-//	// 16. Xt
-//	cout << "\n16. Xt" << endl;
-//	Transp(MatX).Show();
+	// 16. Xt
+	cout << "\n16. Xt" << endl;
+	Transp(MatX).Show();
 //
 //	// 17. X*Xt
 //	cout << "\n17. X*Xt" << endl;

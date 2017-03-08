@@ -323,8 +323,37 @@ fVector &fVector::Swap(int i,int j)
 	this->elem[j] = tmp;
 	return *this;
 }
-//fVector GetBlock(int i, int j) const;
-//void    SetBlock(int i, int j, const fVector &);
+fVector fVector::GetBlock(int i, int j) const
+{
+	if (j > i) {
+		fVector vec(j - i + 1);
+		int count = 0;
+		for (i; i < j+1; i++) {
+			vec.elem[count++] = this->elem[i];
+		}
+		return vec;
+	}
+	else {
+		cout << "The arguements are ERROR!\n";
+		cout << "(const A, const B), B must > A\n";
+		return fVector();
+	}
+}
+void    fVector::SetBlock(int i, int j, const fVector &A)
+{
+	if ((j > i) && (j < this->size) && ((j-i+1) == A.size)) {
+		int count = 0;
+		for (i; i <= j; i++) {
+			this->elem[i] = A.elem[count++];
+		}
+	}
+	else {
+		cout << "The arguements are ERROR!\n";
+		cout << "(const A, const B), B must be bigger than A\n";
+		cout << "B must be smaller than the vector's size \n";
+		cout << "The block size must equal to the input vector's size";
+	}
+}
 void	fVector::Show(VecType Type/* = ColVec*/) const
 {
 	if (Type == ColVec) {
