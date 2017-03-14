@@ -210,11 +210,33 @@ fVector& operator /= (fVector &A, Float B)
 }
 fVector Min(const fVector &A, const fVector &B)
 {
-	return (A*A < B*B) ? A : B;
+	if(A.size == B.size){
+		fVector C(A.size);
+		for (int i = 0; i < C.size; i++) {
+			C.elem[i] = (A.elem[i] < B.elem[i]) ? A.elem[i] : B.elem[i];
+		}
+		return C;
+	}
+	else {
+		cout << "The input vectors' size are not equal\n";
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
 }
 fVector  Max(const fVector &A, const fVector &B) // Element-wise maximum-element extraction between two vectors
 {
-	return (A*A > B*B) ? A : B;
+	if (A.size == B.size) {
+		fVector C(A.size);
+		for (int i = 0; i < C.size; i++) {
+			C.elem[i] = (A.elem[i] > B.elem[i]) ? A.elem[i] : B.elem[i];
+		}
+		return C;
+	}
+	else {
+		cout << "The input vectors' size are not equal\n";
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
 }
 double   Dist(const fVector &A, const fVector &B) // Returns two norm distance between two vectors
 {
@@ -257,7 +279,12 @@ fVector  Sqrt(const fVector &A) // Element-wise square root of a vector
 }
 double   Mean(const fVector &A) // Mean value of a vector.
 {
-	return OneNorm(A) / A.size;
+	double mean = 0;
+	for(int i = 0; i<A.size; i++){
+		mean += A.elem[i];
+	}
+	mean = mean / A.size;
+	return mean;
 }
 double   Var(const fVector &A) // Variance of a vector. 
 {
@@ -365,7 +392,7 @@ void	fVector::Show(VecType Type/* = ColVec*/) const
 	else if (Type == RowVec) {
 		//std::cout << "The vector is\n";
 		for (int i = 0; i < this->size; i++) {
-			cout << elem[i] << "\t";
+			cout << setw(9) << elem[i];
 		}
 		cout << endl;
 	}

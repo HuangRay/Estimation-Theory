@@ -18,6 +18,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iomanip>
+#include <cmath>
 //#include <malloc.h>
 #include "fVector.h"
 using namespace std;
@@ -70,6 +72,7 @@ friend double   Trace       ( const fMatrix & );// Computes the trace of a squar
 friend double   OneNorm     ( const fMatrix & );// Computes the L1-norm of the matrix A, which is the maximum absolute column sum.
 friend double   InfNorm     ( const fMatrix & );// Computes the Inf-norm of the matrix A, which is the maximum absolute row sum.
 
+friend fMatrix	Cofactor ( const fMatrix & );// Computes the cofactor of a square matrix.
 friend fMatrix  Inverse  ( const fMatrix & );// Computes the inverse of a square matrix.
 friend fMatrix  Cholesky	( const fMatrix & );// Computes Cholesky decomposition of a square matrix.	
 friend fVector  Mean		( const fMatrix & );// Computes column mean value of a matrix.	

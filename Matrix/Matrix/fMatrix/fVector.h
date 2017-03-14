@@ -13,6 +13,7 @@
 *
 */
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #ifndef __VECTOR_INCLUDED__
 #define __VECTOR_INCLUDED__

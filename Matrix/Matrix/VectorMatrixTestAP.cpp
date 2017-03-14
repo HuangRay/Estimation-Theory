@@ -199,108 +199,109 @@ void testMatrixFuns()
 	(MatA/2).Show();
 
 	// 7. A*B
-//	cout << "\n7. A*B" << endl;
-//	(MatA*MatB).Show();
-//
-//	// 8. MatA*VecA
-//	cout << "\n8. MatA*VecA" << endl;
-//	(MatA*VecA).Show();
-//
-//	// 9. VecA*MatA
-//	cout << "\n9. VecA*MatA" << endl;
-//	(VecA*MatA).Show(RowVec);
-//
-//	// 10. A+=B
-//	cout << "\n10. A+=B" << endl;
-//	(MatA+=MatB).Show();
-//
-//	// 11. A-=B
-//	cout << "\n11. A-=B" << endl;
-//	(MatA-=MatB).Show();
-//
-//	// 12. A*=2
-//	cout << "\n12. A*=2" << endl;
-//	(MatA*=2).Show();
-//
-//	// 13. A/=2
-//	cout << "\n13. A/=2" << endl;
-//	(MatA/=2).Show();
-//
-//	// 14. A*=B
-//	cout << "\n14. A*=B" << endl;
-//	(MatA*=MatB).Show();
-//	MatA = MatC;
-//
-//	// 15. VecA*=MatA
-//	cout << "\n15. VecA*=MatA" << endl;
-//	(VecA*=MatA).Show(RowVec);
-//	VecA = VecC;
-//
+	cout << "\n7. A*B" << endl;
+	(MatA*MatB).Show();
+
+	// 8. MatA*VecA
+	cout << "\n8. MatA*VecA" << endl;
+	(MatA*VecA).Show();
+
+	// 9. VecA*MatA
+	cout << "\n9. VecA*MatA" << endl;
+	(VecA*MatA).Show(RowVec);
+
+	// 10. A+=B
+	cout << "\n10. A+=B" << endl;
+	(MatA+=MatB).Show();
+
+	// 11. A-=B
+	cout << "\n11. A-=B" << endl;
+	(MatA-=MatB).Show();
+
+	// 12. A*=2
+	cout << "\n12. A*=2" << endl;
+	(MatA*=2).Show();
+
+	// 13. A/=2
+	cout << "\n13. A/=2" << endl;
+	(MatA/=2).Show();
+
+	// 14. A*=B
+	cout << "\n14. A*=B" << endl;
+	(MatA*=MatB).Show();
+	MatA = MatC;
+
+	// 15. VecA*=MatA
+	cout << "\n15. VecA*=MatA" << endl;
+	(VecA*=MatA).Show(RowVec);
+	VecA = VecC;
+
 //	cout << "\nStarts to test matrix functions..." << endl;
 //
 	// 16. Xt
 	cout << "\n16. Xt" << endl;
 	Transp(MatX).Show();
-//
-//	// 17. X*Xt
-//	cout << "\n17. X*Xt" << endl;
-//	AATransp(MatX).Show();
-//
-//	// 18. Xt*X
-//	cout << "\n18. Xt*X" << endl;
-//	ATranspA(MatX).Show();
-//
-//	// 19, VecA*VecBt
-//	cout << "\n19. VecA*VecBt" << endl;
-//	(Outer(VecA,VecB)).Show();
-//
-//	// 20, Identity(4)
-//	cout << "\n20. Identity(4)" << endl;
-//	(Identity(4)).Show();
-//
-//	// 21, Diag(VecA)
-//	cout << "\n21. Diag(VecA)" << endl;
-//	(Diag(VecA)).Show();
-//
-//	// 22, Diag(MatA)
-//	cout << "\n22. Diag(MatA)" << endl;
-//	(Diag(MatA)).Show();
-//
-//	// 23, Diag(0.1, 0.2, 0.3)
-//	cout << "\n23. Diag(0.1, 0.2, 0.3)" << endl;
-//	(Diag(0.1, 0.2, 0.3)).Show();
-//
-//	// 24. Determinant(MatA)
-//	cout << "\n24. Determinant(MatA) = " << Determinant(MatA) << endl; 
-//
-//	// 25. Trace(MatA)
-//	cout << "\n25. Trace(MatA) = " << Trace(MatA) << endl; 
-//
-//	// 26. OneNorm(MatA)
-//	cout << "\n26. OneNorm(MatA) = " << OneNorm(MatA) << endl; 
-//
-//	// 27. InfNorm(MatA)
-//	cout << "\n27. InfNorm(MatA) = " << InfNorm(MatA) << endl; 
-//
-//	// 28. Inverse(MatA)
-//	cout << "\n28. Inverse(MatA) = " << endl; 
-//	(Inverse(MatA)).Show();
-//
-//	// 29. Cholesky(AATransp(MatA))
-//	cout << "\n29. Cholesky(AATransp(MatA)) = " << endl; 
-//	(Cholesky(AATransp(MatA))).Show();
-//	
-//	// 30. Mean(MatA)
-//	cout << "\n30. Mean(MatA) = " << endl; 
-//	(Mean(MatA)).Show(RowVec);
-//
-//	// 31. Cov(MatA)
-//	cout << "\n31. Cov(MatA) = " << endl; 
-//	(Cov(MatA)).Show();
-//
-//	// 32. Cov(VecA)
-//	cout << "\n32. Cov(VecA) = " << endl; 
-//	(Cov(VecA)).Show();
+
+	// 17. X*Xt
+	cout << "\n17. X*Xt" << endl;
+	AATransp(MatX).Show();
+
+	// 18. Xt*X
+	cout << "\n18. Xt*X" << endl;
+	ATranspA(MatX).Show();
+
+	// 19, VecA*VecBt
+	cout << "\n19. VecA*VecBt" << endl;
+	(Outer(VecA,VecB)).Show();
+
+	// 20, Identity(4)
+	cout << "\n20. Identity(4)" << endl;
+	(Identity(4)).Show();
+
+	// 21, Diag(VecA)
+	cout << "\n21. Diag(VecA)" << endl;
+	(Diag(VecA)).Show();
+
+	// 22, Diag(MatA)
+	cout << "\n22. Diag(MatA)" << endl;
+	(Diag(MatA)).Show();
+
+	// 23, Diag(0.1, 0.2, 0.3)
+	cout << "\n23. Diag(0.1, 0.2, 0.3)" << endl;
+	(Diag(0.1, 0.2, 0.3)).Show();
+
+	// 24. Determinant(MatA)
+	cout << "\n24. Determinant(MatA) = " << Determinant(MatA) << endl; 
+
+	// 25. Trace(MatA)
+	cout << "\n25. Trace(MatA) = " << Trace(MatA) << endl; 
+
+	// 26. OneNorm(MatA)
+	cout << "\n26. OneNorm(MatA) = " << OneNorm(MatA) << endl; 
+
+	// 27. InfNorm(MatA)
+	cout << "\n27. InfNorm(MatA) = " << InfNorm(MatA) << endl; 
+
+	// 28. Inverse(MatA)
+	cout << "\n28. Inverse(MatA) = " << endl; 
+	//MatA.Show();
+	(Inverse(MatA)).Show();
+
+	// 29. Cholesky(AATransp(MatA))
+	cout << "\n29. Cholesky(AATransp(MatA)) = " << endl; 
+	(Cholesky(AATransp(MatA))).Show();
+	
+	// 30. Mean(MatA)
+	cout << "\n30. Mean(MatA) = " << endl; 
+	(Mean(MatA)).Show(RowVec);
+
+	// 31. Cov(MatA)
+	//cout << "\n31. Cov(MatA) = " << endl; 
+	//(Cov(MatA)).Show();
+
+	// 32. Cov(VecA)
+	cout << "\n32. Cov(VecA) = " << endl; 
+	(Cov(VecA)).Show();
 //	
 //	// 33. SVD decomposition
 //	/*
