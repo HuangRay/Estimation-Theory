@@ -296,8 +296,8 @@ void testMatrixFuns()
 	(Mean(MatA)).Show(RowVec);
 
 	// 31. Cov(MatA)
-	//cout << "\n31. Cov(MatA) = " << endl; 
-	//(Cov(MatA)).Show();
+	cout << "\n31. Cov(MatA) = " << endl; 
+	(Cov(MatA)).Show();
 
 	// 32. Cov(VecA)
 	cout << "\n32. Cov(VecA) = " << endl; 

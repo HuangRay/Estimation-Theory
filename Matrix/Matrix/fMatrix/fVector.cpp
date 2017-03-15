@@ -290,12 +290,7 @@ double   Var(const fVector &A) // Variance of a vector.
 {
 	double mean = Mean(A);
 	//cout << mean << endl;
-	double var = 0;
-	for (int i = 0; i < A.size; i++) {
-		var += pow((A.elem[i] - mean),2);
-		//cout << var << endl;
-	}
-	var /= A.size;
+	double var = (A - mean)*(A - mean) / (A.size - 1);
 	return var;
 }
 double   Std(const fVector &A) // Standard derivation of a vector.    	

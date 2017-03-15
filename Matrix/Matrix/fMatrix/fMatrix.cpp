@@ -449,7 +449,6 @@ fMatrix  Cholesky(const fMatrix &A)// Computes Cholesky decomposition of a squar
 fVector  Mean(const fMatrix &A)// Computes column mean value of a matrix.
 {
 	fVector B(A.cols);
-	B.Array()[0] = Mean(A.GetCol(0));
 	for (int i = 0; i < B.Size(); i++) {
 		B.Array()[i] = Mean(A.GetCol(i));
 	}
@@ -457,18 +456,21 @@ fVector  Mean(const fMatrix &A)// Computes column mean value of a matrix.
 }
 fMatrix  Cov(const fMatrix &A)// Returns a covariance matrix of a square matrix.
 {
-	fMatrix B(A.rows, A.cols);
+	
 	if (A.rows == A.cols) {
-		int size = A.rows;
-		for (int i = 0; i < A.rows; i++) {
-			double row_mean = Mean(A.GetRow(i));
-			for (int j = 0; j < A.cols; j++) {
-				double cov = (A.elem[i*A.cols] - row_mean) * (A.elem[i*A.cols + j] - row_mean) / size;
-				B.elem[i*A.cols + j] = cov;
+		fMatrix B(A.rows, A.cols);
+		int n = A.rows;
+		//cout << Mean(A.GetCol(0));
+		for (int i = 0; i < B.rows; i++) {
+			for (int j = 0; j < B.cols; j++) {
+				double mean_i = Mean(A.GetCol(i));
+				double mean_j = Mean(A.GetCol(j));
+				//cout << mean_i << mean_j << endl;
+				B.elem[i*B.cols + j] = ((A.GetCol(i) - mean_i)*(A.GetCol(j) - mean_j)) / (n - 1);
 			}
 		}
-		cout << endl;
 		return B;
+		
 	}
 	else {
 		cout << "The input matrix's size is invalid\n";
@@ -477,10 +479,10 @@ fMatrix  Cov(const fMatrix &A)// Returns a covariance matrix of a square matrix.
 	}
 	
 }
-fMatrix Cov(const fVector& src)
+fMatrix Cov(const fVector& A)
 {
-	fVector subMean = src - Mean(src);
-	return Outer(subMean, subMean);
+	fVector subMean = A - Mean(A);
+	return Outer(subMean, subMean)/(A.Size()-1);
 }
 
 //void     SVDcmp(fMatrix &AU, fVector &W, fMatrix &V); // Computes SVD decomposition of a matrix.
