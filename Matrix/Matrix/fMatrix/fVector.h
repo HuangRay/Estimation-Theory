@@ -92,7 +92,7 @@ public:
 	fVector(Float, Float, Float);
 	~fVector();
 
-//	static  const fVector Null;
+	static  const fVector Null;
 
 public:
 	fVector &operator=(const fVector &);

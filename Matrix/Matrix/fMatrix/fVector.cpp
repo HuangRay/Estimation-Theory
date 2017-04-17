@@ -67,6 +67,7 @@ fVector::fVector(Float A, Float B, Float C)
 fVector::~fVector()
 {
 	nVecCount--;
+	//cout << nVecCount << endl;
 	delete [] elem;
 }
 fVector  operator +  (const fVector &A, const fVector &B)

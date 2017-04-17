@@ -51,7 +51,9 @@ fMatrix::fMatrix(const fMatrix &A)
 fMatrix::~fMatrix(void)
 {
 	delete[] elem;
+	
 	this->nMatCount--;
+	//cout << nMatCount << endl;
 }
  //1. A+B
 fMatrix  operator +  (const fMatrix &A, const fMatrix &B)
@@ -125,6 +127,8 @@ fMatrix  operator *  (const fMatrix &A, const fMatrix &B)
 		for (int i = 0; i < C.rows; i++) {
 			for (int j = 0; j < C.cols; j++) {
 				C.elem[i*C.cols + j] = A.GetRow(i)*B.GetCol(j);
+				//A.GetRow(i).Show();
+				//B.GetCol(j).Show();
 			}
 		}
 	}
