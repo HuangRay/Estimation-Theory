@@ -6,8 +6,8 @@ void WLS_test();
 void ML_test();
 int main()
 {
-	LS_test();
-	WLS_test();
+	//LS_test();
+	//WLS_test();
 	ML_test();
 	
 }

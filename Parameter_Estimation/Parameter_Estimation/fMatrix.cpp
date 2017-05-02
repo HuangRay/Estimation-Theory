@@ -308,40 +308,17 @@ double   Determinant(const fMatrix &A)// Computes the determinant of a square ma
 	double val = 0;
 	if (A.cols == A.rows) {
 		if (A.cols > 2) {
-			//fMatrix *arrMat = new fMatrix[A.cols];
-			//for (int i = 0; i < A.cols; i++) {
-			//	arrMat[i].SetSize(A.rows - 1, A.cols - 1);
-			//}
-			//for (int num_matrix = 0; num_matrix < A.cols; num_matrix++) {
-			//	int num_elem = A.cols;
-			//	for (int i = 0; i < arrMat[0].rows*arrMat[0].cols; i++) {
-			//		if (num_matrix == (num_elem%A.cols)) {
-			//			num_elem++;
-			//		}
-			//		arrMat[num_matrix].elem[i] = A.elem[num_elem];
-			//		//arrMat[num_matrix].Show();
-			//		num_elem++;
-			//	}
-				//arrMat[num_matrix].Show();			
-				//if (num_matrix % 2 == 1) A.elem[num_matrix] = -A.elem[num_matrix];
-				//if (A.elem[num_matrix] == 0) {
-				//	val += 0;
-				//}
-				//else {
-					//val += A.elem[num_matrix] * Determinant(arrMat[num_matrix]);
+			fMatrix subMat(A.rows - 1, A.cols - 1);
+
 			for (int i = 0; i < A.cols; i++) {
-				
+
 				if (A.elem[i] == 0) {
 					val += 0;
 				}
 				else {
 					val += A.elem[i] * Cofactor(A).elem[i];
 				}
-				
 			}
-				
-				//}		
-			//delete[] arrMat;
 		}
 		else {
 			val = A.elem[0] * A.elem[3] - A.elem[1] * A.elem[2];

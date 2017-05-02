@@ -69,17 +69,18 @@ fMatrix* CParamEstimator::SolveMaximumLikelihood(fVector* pfVecP_ml)
 	fMatrix W;
 	fMatrix *Var_ml = new fMatrix;
 	*pfVecP_ls = Inverse(ATranspA(*this->pML->pMat_H))*Transp(*this->pML->pMat_H)*(*this->pML->pVec_Z);
-	cout << "test" << endl;
+	pfVecP_ls->Show();
+	std::cout << endl;
 	v = (*this->pML->pVec_Z) - (*this->pML->pMat_H)*(*pfVecP_ls);
-	cout << "test" << endl;
+
 	v = v - Mean(v);
-	cout << "test" << endl;
+
 	Vv = Outer(v, v) / (v.Size() - 1);
-	cout << "test" << endl;
+
 	Vv = Diag(Diag(Vv));
-	cout << "test" << endl;
-	//Vv.Show();
-	//std::cout << Determinant(Vv) << std::endl;
+
+	Vv.Show();
+	std::cout << Determinant(Vv) << std::endl;
 	//cout << "test" << endl;
 	W = Inverse(Vv);
 	//W.Show();
