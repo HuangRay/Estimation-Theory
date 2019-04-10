@@ -3,12 +3,13 @@
 
 //#include "stdafx.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
-#include <tchar.h>
-#include "fMatrix\fVector.h"
+//#include <tchar.h>
+#include "fVector.h"
 //#include "fMatrix.h"
 //#include "SVDdecomposition.h"
-
+#define PAUSE {printf("Press Enter key to continue..."); fgetc(stdin);}
 using namespace std;
 
 void testVectorFuns()
@@ -308,11 +309,11 @@ void testVectorFuns()
 //	*/
 //}
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	testVectorFuns();
-	system("pause");
-
+	//system("pause");
+    PAUSE
 	//testMatrixFuns();
 	//system("pause");
 	return 0;

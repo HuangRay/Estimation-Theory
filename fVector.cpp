@@ -6,7 +6,7 @@ fVector::fVector(int size):size(size)
 {
 	elem = new Float[size];
 	//std::cout << size << fVector::size << std::endl;
-	std::memset(elem, 0, sizeof(Float)*size);
+	memset(elem, 0, sizeof(Float)*size);
 	//for (int i = 0; i < size; i++) {
 	//	std::cout << *(elem + i) << " ";
 	//}

@@ -15,6 +15,8 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string.h>
+#include <stdlib.h>
 #ifndef __VECTOR_INCLUDED__
 #define __VECTOR_INCLUDED__
 
